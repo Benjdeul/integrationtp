@@ -1,10 +1,10 @@
 <?php
-include_once('../inc/bdd.php');
+include_once('../../inc/bdd.php');
 if(isset($_GET['login']) && isset($_GET['pwd'])){
     $bdd = dbConnect();
 	$login = htmlspecialchars($_GET['login']);
 	$pwd = htmlspecialchars($_GET['pwd']);
-	$req = $bdd->prepare('SELECT * FROM utilisateurs WHERE user_username = ? AND user_pwd = ?');
+	$req = $bdd->prepare('SELECT user_username FROM utilisateurs WHERE user_username = ? AND user_pwd = ?');
     $req->execute(array($login, $pwd));
     $nbrow = $req->rowcount();
     $req->closeCursor();
