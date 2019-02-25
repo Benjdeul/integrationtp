@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 21 Janvier 2019 à 16:06
+-- Généré le :  Lun 25 Février 2019 à 16:20
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -152,6 +152,19 @@ INSERT INTO `clients` (`cli_id`, `cli_nom`, `cli_adr`, `cli_cps`, `cli_ville`, `
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `fbaccount`
+--
+
+CREATE TABLE IF NOT EXISTS `fbaccount` (
+  `fbaccount_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fbaccount_email` varchar(255) NOT NULL,
+  `fbaccount_pwd` varchar(255) NOT NULL,
+  PRIMARY KEY (`fbaccount_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `genres`
 --
 
@@ -287,11 +300,20 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `user_username` varchar(255) CHARACTER SET utf8 NOT NULL,
   `user_pwd` varchar(255) CHARACTER SET utf8 NOT NULL,
   `user_email` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `user_dateinscription` date NOT NULL,
-  `user_lastconnexion` date NOT NULL,
-  `user_comptefb` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `user_dateinscription` datetime NOT NULL,
+  `user_lastconnexion` datetime NOT NULL,
+  `user_comptefb` int(11) DEFAULT NULL,
+  `user_tokenreset` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`user_id`, `user_username`, `user_pwd`, `user_email`, `user_dateinscription`, `user_lastconnexion`, `user_comptefb`, `user_tokenreset`) VALUES
+(3, 'benjamin', 'benjamin', 'benjamin@benjamin.fr', '2019-02-25 15:02:06', '2019-02-25 15:02:06', 0, NULL),
+(4, 'benjamin', 'benjamin', 'deleiris.benjamin@gmail.com', '2019-02-25 16:02:14', '2019-02-25 16:19:55', 0, '53c61f9bd6c144ca935bb0bc9aad41ef');
 
 -- --------------------------------------------------------
 
