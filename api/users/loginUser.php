@@ -13,7 +13,7 @@ if(isset($_POST['login']) && isset($_POST['pwd'])){
         $req->execute(array(date('Y-m-d H:i:s', time()), $login));
         $req->closeCursor();
     	$success = true;
-        $message = "Welcom";
+        $message = "";
     }
     else{
     	$success = false;
@@ -27,4 +27,3 @@ else{
 $retour["success"] = $success;
 $retour["message"] = $message;
 echo json_encode($retour);
-?>

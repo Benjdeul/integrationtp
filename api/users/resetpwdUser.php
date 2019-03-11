@@ -31,9 +31,8 @@ else if(isset($_POST['email'])){
     	$req = $bdd->prepare('UPDATE utilisateurs SET user_tokenreset = ?, user_pwd = ? WHERE user_email = ?');
    	 	$req->execute(array($token, $tmppwd, $email));
    	 	$req->closeCursor();
-   	 	//mail($email, 'Reset password', 'http://localhost/tpintegration/resetpassword.php?token='.$token.'&email='.$email);
    	 	$success = true;
-        $message = "Email envoyé.";    
+        $message = "http://localhost/tpintegration/resetpassword.php?token=$token&email=$email";
    	}
     else{
     	$success = false;
