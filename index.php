@@ -87,6 +87,11 @@ if(isset($_POST['login']) && isset($_POST['pwd'])){
             background-color: #f44336;
         }
 
+        .signupbtn{
+            width: auto;
+            padding: 10px 18px;
+            background-color: limegreen;
+        }
         .container {
             padding: 16px;
         }
@@ -186,10 +191,8 @@ if(isset($_POST['login']) && isset($_POST['pwd'])){
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
 
-            <button type="submit">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
+            <button type="submit" class="signupbtn">Login</button>
+
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
@@ -221,11 +224,6 @@ if(isset($_POST['login']) && isset($_POST['pwd'])){
             <label for="psw-repeat"><b>Repeat Password</b></label>
             <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
-            <label>
-                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-            </label>
-
-            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
             <div class="clearfix">
                 <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
