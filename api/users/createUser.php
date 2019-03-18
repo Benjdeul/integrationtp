@@ -1,5 +1,5 @@
 <?php 
-include_once('../../inc/bdd.php');
+include_once('../usefullFunctions.php');
 $bdd =  dbConnect();
 if(isset($_POST['username']) && isset($_POST['pwd']) && isset($_POST['email'])){
 	$username = htmlspecialchars($_POST['username']);
@@ -9,6 +9,7 @@ if(isset($_POST['username']) && isset($_POST['pwd']) && isset($_POST['email'])){
     $req->execute(array($email));
     $exist = $req->rowcount();
     if($exist > 0){
+    	$success = false;
     	$message = "L'utilisateur existe déjà!";
     }
     else{
@@ -22,10 +23,14 @@ if(isset($_POST['username']) && isset($_POST['pwd']) && isset($_POST['email'])){
     	}
 		$req = $bdd->prepare('INSERT INTO utilisateurs(user_username, user_pwd, user_email, user_dateinscription, user_lastconnexion, user_comptefb) VALUES(?, ?, ?, ?, ?, ?)');
    	 	$req->execute(array($username, $pwd, $email, date('Y-m-d H:i:s', time()), date('Y-m-d H:i:s', time()), $lastInsertId));
+   	 	$success = true;
     	$message = "Utilisateur créé";
     }
 }
 else{
+	$success = false;
 	$message = "Une erreur est survenue!";
 }
-echo json_encode($message);
+$retour["success"] = $success;
+$retour["message"] = $message;
+echo json_encode($retour);

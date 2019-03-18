@@ -1,5 +1,5 @@
 <?php
-include_once('../../inc/bdd.php');
+include_once('../usefullFunctions.php');
 $bdd = dbConnect();
 if(isset($_POST['login']) && isset($_POST['pwd'])){
 	$login = htmlspecialchars($_POST['login']);
@@ -13,7 +13,8 @@ if(isset($_POST['login']) && isset($_POST['pwd'])){
         $req->execute(array(date('Y-m-d H:i:s', time()), $login));
         $req->closeCursor();
     	$success = true;
-        $message = "";
+        $message = "Bienvenue";
+        $_SESSION['user'] = $login;
     }
     else{
     	$success = false;

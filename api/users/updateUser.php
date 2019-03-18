@@ -1,5 +1,5 @@
 <?php
-include_once('../../inc/bdd.php');
+include_once('../usefullFunctions.php');
 $bdd = dbConnect();
 if(isset($_POST['data'])){
 	$data = unserialize($_POST['data']);

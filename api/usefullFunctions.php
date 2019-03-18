@@ -1,4 +1,5 @@
 <?php
+include_once('bdd.php');
 function checkWord($word = ""){
     $blacklist = explode(",", file_get_contents("blacklist.txt"));
     if(!empty($word)){
@@ -13,4 +14,3 @@ function checkWord($word = ""){
         return "missing parameter";
     }
 }
-echo checkWord(isset($_GET['word']) ? $_GET['word'] : "");
